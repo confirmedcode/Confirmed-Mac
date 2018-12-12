@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1038,28 +1039,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-dJ-b8s" customClass="BackgroundImageView" customModule="Confirmed_VPN" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="440" id="BlD-a8-gys"/>
-                                    <constraint firstAttribute="width" constant="320" id="kIh-0z-a3H"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="white_background" id="NW2-p0-NAX"/>
-                            </imageView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-p8-x2P" customClass="InteractionBlock" customModule="Confirmed_VPN" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="ISE-dJ-b8s" firstAttribute="centerX" secondItem="zHh-5H-OZ7" secondAttribute="centerX" id="CR0-wn-N48"/>
-                            <constraint firstItem="ISE-dJ-b8s" firstAttribute="height" secondItem="zHh-5H-OZ7" secondAttribute="height" id="bSO-wf-XUa"/>
-                            <constraint firstItem="ISE-dJ-b8s" firstAttribute="centerY" secondItem="zHh-5H-OZ7" secondAttribute="centerY" id="cLw-aM-h7J"/>
-                            <constraint firstItem="ISE-dJ-b8s" firstAttribute="width" secondItem="zHh-5H-OZ7" secondAttribute="width" id="nC8-az-jqi"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="ISE-dJ-b8s" id="x8r-up-IPG"/>
                         <outlet property="interactionBlock" destination="gBJ-p8-x2P" id="CBQ-Vz-5YL"/>
                     </connections>
                 </viewController>
@@ -1081,7 +1067,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Require VPN" identifier="" id="NnP-VY-pxE">
-                                        <view key="view" ambiguous="YES" id="NNK-92-f3b">
+                                        <view key="view" id="NNK-92-f3b">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1091,7 +1077,7 @@
                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="VAs-sP-n4C">
                                                         <font key="font" size="11" name="AvenirNext-Regular"/>
                                                         <string key="title">If Confirmed is unable to connect, you will still be able to browse the Internet without encryption through our servers.   For privacy focused users, enable the setting below to require the VPN connection for all websites that are not whitelisted in the Confirmed &amp; Custom tabs.</string>
-                                                        <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" name="rgb-80"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -1110,7 +1096,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Tab" identifier="" id="Tpm-LO-a5R">
-                                        <view key="view" id="61O-hu-kfY">
+                                        <view key="view" ambiguous="YES" id="61O-hu-kfY">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1119,7 +1105,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="wlh-D2-ywN">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="221"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="HEp-4Y-0sd" viewBased="YES" id="BuP-Zl-6v6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="198"/>
@@ -1142,15 +1128,15 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="domainTableCell" id="emJ-jT-fh0">
-                                                                                <rect key="frame" x="1" y="1" width="309.5" height="17"/>
+                                                                                <rect key="frame" x="1" y="1" width="310" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pre-4J-odV">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="310" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" tag="500" title="Table View Cell" id="fyU-A7-Ugd">
                                                                                             <font key="font" size="12" name="AvenirNext-Regular"/>
-                                                                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <color key="textColor" name="rgb-80"/>
                                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
                                                                                     </textField>
@@ -1175,11 +1161,11 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="OQv-4J-Vpw" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="17"/>
+                                                                                <rect key="frame" x="313.5" y="1" width="103" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="Mz8-cj-eRU">
-                                                                                        <rect key="frame" x="20.5" y="0.0" width="61" height="18"/>
+                                                                                        <rect key="frame" x="20" y="0.0" width="61" height="18"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XqA-d5-dWZ">
                                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1220,7 +1206,7 @@
                                                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="jOm-JC-pGI">
                                                         <font key="font" size="10" name="AvenirNext-Regular"/>
                                                         <string key="title">Certain websites don't operate well with a VPN or specifically block a VPN's use. For the most seamless experience, we recommend not sending this small percentage of traffic through a VPN. This is configurable and you can add or remove sites as you would like.</string>
-                                                        <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" name="rgb-80"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -1237,7 +1223,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="oLt-s5-8gZ">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="235"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="60" rowSizeStyle="automatic" headerView="ary-Y5-Lr9" viewBased="YES" id="WD2-yi-zaD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="212"/>
@@ -1260,7 +1246,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="addDomainTableCell" id="Nnf-SR-6XM" customClass="WhitelistAddDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="1" width="309.5" height="60"/>
+                                                                                <rect key="frame" x="1" y="1" width="310" height="60"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="l7M-Nx-atl" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
@@ -1299,7 +1285,7 @@
                                                                                 </connections>
                                                                             </tableCellView>
                                                                             <tableCellView identifier="domainTableCell" id="xIR-3V-Wvc" customClass="WhitelistDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="63" width="309.5" height="19"/>
+                                                                                <rect key="frame" x="1" y="63" width="310" height="19"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="pt4-i3-iDP">
@@ -1332,7 +1318,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="jET-tz-8Gs" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="40"/>
+                                                                                <rect key="frame" x="313.5" y="1" width="103" height="40"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="mCu-jp-90s">
@@ -1377,7 +1363,7 @@
                                                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="gqC-m0-le1">
                                                         <font key="font" size="10" name="AvenirNext-Regular"/>
                                                         <string key="title">If you would like to have certain websites bypass the VPN and go directly to the site, add them here. To remove a custom domain, simply uncheck the whitelist button.</string>
-                                                        <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" name="rgb-80"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -1408,7 +1394,7 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCheckable" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
-                                        <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="rgb-80"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1437,7 +1423,7 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCheckable" value="YES"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
-                                        <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="rgb-80"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1466,7 +1452,7 @@
                                         <color key="value" red="0.15401785709999999" green="0.56501116070000001" blue="0.96663657650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
-                                        <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="rgb-80"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1513,7 +1499,7 @@
                                     <string key="title">Confirmed includes a Content Blocker that protects your privacy and increases performance in Safari by blocking invasive code. 
 
 To enable, open Safari &gt; Preferences &gt; Extensions</string>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1600,7 +1586,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="The only Openly Operated VPN" id="9aa-kx-5Tz">
                                     <font key="font" size="12" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -1616,13 +1602,13 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 </buttonCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                        <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="rgb-80"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonHighlightedColor">
                                         <color key="value" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="buttonPressedColor">
-                                        <color key="value" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" name="rgb-80-hover"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCheckable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
@@ -1725,7 +1711,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isCheckable" value="YES"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
-                                                <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" name="rgb-80"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -1754,7 +1740,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                                 <color key="value" red="0.15401785709999999" green="0.56501116070000001" blue="0.96663657650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
-                                                <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" name="rgb-80"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -1773,14 +1759,14 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                                 <color key="value" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                                <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" name="rgb-80"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isCheckable" value="NO"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="buttonHighlightedColor">
                                                 <color key="value" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="buttonPressedColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" name="rgb-80-hover"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="uncheckedButtonColor">
                                                 <color key="value" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1795,7 +1781,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="Tun-Xx-wiU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
-                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1824,7 +1810,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" id="oQq-IN-UCn" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
-                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1855,7 +1841,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password Confirmation" drawsBackground="YES" id="JfM-OE-qNQ" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
-                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -1954,7 +1940,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Signed in as" id="ghA-Z7-IVL">
                                             <font key="font" size="18" name="Montserrat-Regular"/>
-                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -1963,7 +1949,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="team@confirmedvpn.com" id="qOD-zO-n6b">
                                             <font key="font" size="14" name="AvenirNext-DemiBold"/>
-                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -2109,7 +2095,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Confirmed EULA" id="pI8-Hr-c2q">
                                     <font key="font" size="16" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2118,7 +2104,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="You must agree to the License Terms and Conditions before you can install Confirmed VPN." id="ljK-f8-3hr">
                                     <font key="font" size="13" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2127,7 +2113,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="To continue, check agree and select Agree &amp; Continue." id="l3G-vR-3js">
                                     <font key="font" size="13" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2284,7 +2270,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Get Started" id="Bbp-dl-gY2">
                                     <font key="font" size="16" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2315,7 +2301,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Click the button below to install Confirmed VPN and protect all of your Internet traffic." id="ihZ-pW-hsg">
                                     <font key="font" size="13" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2342,7 +2328,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="VPN Configuration" id="kAG-ze-uwO">
                                     <font key="font" size="16" name="Montserrat-Regular"/>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2399,7 +2385,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="X7i-AW-mUK">
                                     <font key="font" size="13" name="Montserrat-Regular"/>
                                     <string key="title">Certain websites don't operate well with a VPN by blocking access. For the most seamless experience, we recommend not sending a small percentage of traffic through a VPN.   Though we recommend the default, these rules are configurable below.</string>
-                                    <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" name="rgb-80"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -2422,6 +2408,11 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
         <image name="tunnels_bg" width="369" height="623"/>
         <image name="up_arrow" width="200" height="178"/>
         <image name="usa_flag" width="96" height="96"/>
-        <image name="white_background" width="945" height="1440"/>
+        <namedColor name="rgb-80">
+            <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="rgb-80-hover">
+            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

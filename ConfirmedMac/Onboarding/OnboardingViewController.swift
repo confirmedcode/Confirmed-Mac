@@ -190,7 +190,6 @@ class OnboardingViewController: NSViewController, OnboardingDelegate {
     let pageAnimationTime = 0.75
     @IBOutlet var startOnboardingButton: TunnelsButton?
     @IBOutlet var quitOnboardingButton: TunnelsButton?
-    @IBOutlet var backgroundView: NSImageView?
     
     let mainViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "IntroScreen")) as! OnboardingPageViewController
     let emailViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "EmailScreen")) as! OnboardingPageViewController

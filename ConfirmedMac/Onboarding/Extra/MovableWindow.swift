@@ -19,6 +19,11 @@ class MovableWindow: NSWindow {
         self.titleVisibility                =    .hidden
         self.isMovableByWindowBackground = true
         self.level = .floating
+        if #available(OSX 10.13, *) {
+            self.backgroundColor = NSColor.init(named: NSColor.Name(rawValue: "onboarding_background_color"))
+        } else {
+            self.backgroundColor = NSColor.white
+        }
         
         self.center()
     }

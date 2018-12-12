@@ -82,6 +82,7 @@
 		A1E7481C1F917AAF004B8021 /* ConfirmedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7481B1F917AAF004B8021 /* ConfirmedConstants.swift */; };
 		A1E7481E1F917AE4004B8021 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E7481D1F917AE4004B8021 /* Utils.swift */; };
 		A1F07D4A20A9EC90007CBA1B /* CountryTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F07D4920A9EC90007CBA1B /* CountryTableRowView.swift */; };
+		A1F1965221C1BCDB00900133 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1F1965121C1BCDA00900133 /* Montserrat-Regular.ttf */; };
 		A1F24F831FE85AE6004DEDC2 /* white_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1F24F821FE85AE5004DEDC2 /* white_background.jpg */; };
 		A1F4A1E320D3F7FF0024586C /* InteractionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F4A1E220D3F7FF0024586C /* InteractionBlock.swift */; };
 		D372A8B31FEAD3BD00316E31 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D372A8B11FEAD3BD00316E31 /* HoshiTextField.swift */; };
@@ -256,6 +257,7 @@
 		A1E7481B1F917AAF004B8021 /* ConfirmedConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmedConstants.swift; path = ../../Carthage/Checkouts/AppleSharedLib/ConfirmedConstants.swift; sourceTree = "<group>"; };
 		A1E7481D1F917AE4004B8021 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A1F07D4920A9EC90007CBA1B /* CountryTableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableRowView.swift; sourceTree = "<group>"; };
+		A1F1965121C1BCDA00900133 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		A1F24F821FE85AE5004DEDC2 /* white_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_background.jpg; sourceTree = "<group>"; };
 		A1F4A1E220D3F7FF0024586C /* InteractionBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionBlock.swift; sourceTree = "<group>"; };
 		D372A8B11FEAD3BD00316E31 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				A1865B042031FDEC000F8E14 /* Confirmed VPN-Bridging-Header.h */,
 				A1DBA19721B84FA5008A9322 /* Credits.md */,
 				A1769104207FA2F600CAF05C /* LICENSE.md */,
+				A1F1965121C1BCDA00900133 /* Montserrat-Regular.ttf */,
 				A19192151F44E8390071FF62 /* ConfirmedMac */,
 				A19192271F44E8390071FF62 /* ConfirmedMacTests */,
 				A19192321F44E8390071FF62 /* ConfirmedMacUITests */,
@@ -760,6 +763,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F1965221C1BCDB00900133 /* Montserrat-Regular.ttf in Resources */,
 				A191921B1F44E8390071FF62 /* Assets.xcassets in Resources */,
 				A102F3A41F9BAE5C005307E7 /* Flags.xcassets in Resources */,
 				A1931CF4207578D900E695EB /* proxy_file.js in Resources */,

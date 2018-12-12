@@ -160,7 +160,7 @@ class SignupViewController: OnboardingPageViewController {
     }
     
     @IBAction func forgotPasswordPressed (_ sender: Any) {
-        if let url = URL(string: Global.masterURL + "/forgotPassword"), NSWorkspace.shared.open(url) {
+        if let url = URL(string: Global.masterURL + "/forgot-password"), NSWorkspace.shared.open(url) {
         }
     }
     
