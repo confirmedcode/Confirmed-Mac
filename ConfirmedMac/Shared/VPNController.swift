@@ -389,9 +389,24 @@ class VPNController: NSObject {
         * add password if fetched from there
      */
     static func addPasswordFromP12(rootCertData : Data) -> Data {
+        let appSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("com.confirmed.tunnelsMac")
         let appSupportPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("com.confirmed.tunnelsMac/serverCert.p12")
         let tempAppSupportPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("com.confirmed.tunnelsMac/temp.pem")
         let outputAppSupportPath = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("com.confirmed.tunnelsMac/severCertProtected.p12")
+        
+        do {
+            try FileManager.default.createDirectory(at: appSupportDirectory!, withIntermediateDirectories: true, attributes: nil)
+            
+        } catch {
+            print(error)
+            
+            let alert = NSAlert()
+            alert.messageText = "Error Installing VPN"
+            alert.informativeText = "Please contact the Confirmed Team to resolve the issue: \(error)"
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
         
         try? rootCertData.write(to: appSupportPath!)
         var res = Utils.shell(launchPath: "/usr/bin/openssl", arguments: ["pkcs12", "-in", (appSupportPath?.path)!, "-out", (tempAppSupportPath?.path)!, "-passin", "pass:", "-passout", "pass:" + Global.vpnPassword])
