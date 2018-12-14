@@ -120,6 +120,9 @@ class SignupViewController: OnboardingPageViewController {
 
     @IBAction func signoutButtonPressed (_ sender: Any) {
         Auth.signoutUser()
+        UserDefaults.standard.set(true, forKey: Global.kIsLastStateConnected)
+        UserDefaults.standard.synchronize()
+        
         NotificationCenter.post(name: .signoutUserDuringOnboarding)
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.signupView?.alphaValue = 0.0

@@ -27,7 +27,7 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
         return 20
     }
 
-    @objc func addCustomDomain(sender : NSTextField) {
+    @IBAction func addCustomDomain(sender : NSTextField) {
         DDLogInfo("Adding custom Domain")
         
         if sender.stringValue.count == 0 {

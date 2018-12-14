@@ -15,6 +15,7 @@ import KeychainAccess
 import Alamofire
 import CocoaLumberjackSwift
 import SafariServices
+import Reachability
 
 let fileLogger: DDFileLogger = DDFileLogger() // File Logger
 
@@ -25,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         UserDefaults.standard.synchronize()
         DDLogInfo("Launching here")
-        
         Utils.moveToApplicationsFolder()
         
         Utils.chooseAPIVersion()
@@ -94,8 +94,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
         manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
             NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object:
             NEVPNManager.shared().connection, queue: OperationQueue.main) { (notification) -> Void in
-                self.synchronizeVPNToState()
-            }
+                if NEVPNManager.shared().connection.status == .disconnected {
+                    Utils.updateActualReachability(completion: { isActuallyReachable in
+                        if isActuallyReachable {
+                            self.synchronizeVPNToState()
+                        }
+                    })
+                }             }
         })
         
         //timer to synchronize proxy & VPN
@@ -135,7 +140,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
         * If not Internet not reachable, don't keep re-connecting
      */
     @objc func synchronizeVPNToState() {
-        VPNController.syncVPNToState()
+        if Utils.isInternetActuallyReachable {
+             VPNController.syncVPNToState()
+        }
+        else {
+            Utils.updateActualReachability(completion: { isActuallyReachable in
+                if isActuallyReachable {
+                    VPNController.syncVPNToState()
+                }
+                else { //retry after 5 seconds (faster than timer
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 5.0) {
+                        Utils.updateActualReachability(completion: { isActuallyReachable in
+                            if isActuallyReachable {
+                                VPNController.syncVPNToState()
+                            }
+                        })
+                    }
+                }
+            })
+        }
+        
     }
     
     @objc func openMenubarPanel() {

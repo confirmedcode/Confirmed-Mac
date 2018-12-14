@@ -466,9 +466,28 @@ class Utils: SharedUtils {
         }
         sharingService?.perform(withItems: items)
         
-        
     }
     
     
+    static func updateActualReachability(completion: @escaping (_ isActuallyReachable : Bool) -> Void) {
+        URLCache.shared.removeAllCachedResponses()
+        URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+        Alamofire.SessionManager.default.retrier = nil
+        Alamofire.SessionManager.default.session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+       
+        //use random to prevent weird cache issue
+        Alamofire.SessionManager.default.request("https://www.apple.com", method: .get, parameters: ["random" : arc4random_uniform(1000000)]).response { response in
+                if response.response?.statusCode == 200 {
+                isInternetActuallyReachable = true
+            }
+            else {
+                print("Status code \(response.response?.statusCode)")
+                isInternetActuallyReachable = false
+            }
+            completion(isInternetActuallyReachable)
+        }
+    }
+    
     static var xpcHelperConnection: NSXPCConnection?
+    static var isInternetActuallyReachable = true
 }

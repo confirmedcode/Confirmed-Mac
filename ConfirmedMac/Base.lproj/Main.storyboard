@@ -1096,7 +1096,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Tab" identifier="" id="Tpm-LO-a5R">
-                                        <view key="view" ambiguous="YES" id="61O-hu-kfY">
+                                        <view key="view" id="61O-hu-kfY">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1161,7 +1161,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="OQv-4J-Vpw" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103" height="17"/>
+                                                                                <rect key="frame" x="314" y="1" width="103" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="Mz8-cj-eRU">
@@ -1214,7 +1214,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="View" identifier="" id="Hiq-cj-zKl">
-                                        <view key="view" id="vAn-Ol-Xtg">
+                                        <view key="view" ambiguous="YES" id="vAn-Ol-Xtg">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1255,9 +1255,9 @@
                                                                                             <constraint firstAttribute="width" constant="303" id="TeG-ih-bnz"/>
                                                                                             <constraint firstAttribute="height" constant="42" id="XkF-aB-amp"/>
                                                                                         </constraints>
-                                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Add domain (i.e. netflix.com)" drawsBackground="YES" id="j6s-c1-QnU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
+                                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Add domain (i.e. netflix.com)" drawsBackground="YES" id="j6s-c1-QnU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                                                                             <font key="font" size="11" name="AvenirNext-Regular"/>
-                                                                                            <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <color key="textColor" name="rgb-80"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
                                                                                         <userDefinedRuntimeAttributes>
@@ -1274,6 +1274,9 @@
                                                                                                 <real key="value" value="1"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
+                                                                                        <connections>
+                                                                                            <action selector="addCustomDomainWithSender:" target="0Fv-Lq-nv0" id="FS6-KH-CUs"/>
+                                                                                        </connections>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <constraints>

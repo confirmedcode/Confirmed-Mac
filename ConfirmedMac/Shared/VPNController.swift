@@ -206,11 +206,13 @@ class VPNController: NSObject {
         if Global.reachability?.connection == .wifi || Global.reachability?.connection == .cellular  {
             if let isConnected = UserDefaults.standard.object(forKey:Global.kIsLastStateConnected) as? NSNumber {
                 if isConnected.boolValue {
-                    manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
-                        if manager.connection.status != .connected && manager.connection.status != .connecting && manager.localizedDescription == Global.vpnName {
-                            self.enableVPN()
-                        }
-                    })
+                    if Utils.isInternetActuallyReachable {
+                        manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
+                            if manager.connection.status != .connected && manager.connection.status != .connecting && manager.localizedDescription == Global.vpnName {
+                                self.enableVPN()
+                            }
+                        })
+                    }
                 }
                 else {
                     manager.loadFromPreferences(completionHandler: {(_ error: Error?) -> Void in
