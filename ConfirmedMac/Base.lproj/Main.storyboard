@@ -1067,7 +1067,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Require VPN" identifier="" id="NnP-VY-pxE">
-                                        <view key="view" id="NNK-92-f3b">
+                                        <view key="view" ambiguous="YES" id="NNK-92-f3b">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1084,7 +1084,7 @@
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etC-3T-E6Z">
                                                     <rect key="frame" x="12" y="115" width="344" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <buttonCell key="cell" type="check" title="Force all traffic through VPN if not whitelisted" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vFi-0T-D4Q">
+                                                    <buttonCell key="cell" type="check" title="Kill Switch" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vFi-0T-D4Q">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" size="12" name="AvenirNext-Regular"/>
                                                     </buttonCell>
@@ -1214,7 +1214,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="View" identifier="" id="Hiq-cj-zKl">
-                                        <view key="view" ambiguous="YES" id="vAn-Ol-Xtg">
+                                        <view key="view" id="vAn-Ol-Xtg">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1321,7 +1321,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="jET-tz-8Gs" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103" height="40"/>
+                                                                                <rect key="frame" x="314" y="1" width="103" height="40"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="mCu-jp-90s">
