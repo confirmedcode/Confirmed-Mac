@@ -36,7 +36,6 @@ class VPNController: NSObject {
                 }
                 else {
                     Utils.disableProxySettings()
-                    
                 }
                 enableProxy()
             }

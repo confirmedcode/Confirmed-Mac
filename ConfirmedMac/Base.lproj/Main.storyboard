@@ -1072,17 +1072,17 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zik-U2-HRF">
-                                                    <rect key="frame" x="12" y="161" width="372" height="123"/>
+                                                    <rect key="frame" x="47" y="108" width="349" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="VAs-sP-n4C">
                                                         <font key="font" size="11" name="AvenirNext-Regular"/>
-                                                        <string key="title">If Confirmed is unable to connect, you will still be able to browse the Internet without encryption through our servers.   For privacy focused users, enable the setting below to require the VPN connection for all websites that are not whitelisted in the Confirmed &amp; Custom tabs.</string>
+                                                        <string key="title">For privacy focused power users, enable this setting to require the VPN connection for all websites that are not whitelisted in the Confirmed &amp; Custom tabs. Warning: your Internet will not work without the VPN being enabled.</string>
                                                         <color key="textColor" name="rgb-80"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etC-3T-E6Z">
-                                                    <rect key="frame" x="12" y="115" width="344" height="17"/>
+                                                    <rect key="frame" x="27" y="237" width="344" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="check" title="Kill Switch" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vFi-0T-D4Q">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
