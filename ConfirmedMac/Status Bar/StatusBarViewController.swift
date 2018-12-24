@@ -142,7 +142,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupIPAddressUpdater()
         
         vpnLoadingView?.animate = true
         vpnLoadingView?.wantsLayer = true
@@ -184,6 +184,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
         * if vpn gets uninstalled, we should show an install button of some kind to restore functionality
      */
     override func viewWillAppear() {
+        
         VPNController.isTunnelsVPNInstalled(vpnStatusCallback: {(_ status: Bool) -> Void in
             DDLogInfo("Checking status")
             if (!status) {
@@ -236,6 +237,37 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
         })
     }
 
+    func setupIPAddressUpdater() {
+        self.updateIPAddress()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: NEVPNManager.shared().connection, queue: OperationQueue.main) { (notification) -> Void in
+            if NEVPNManager.shared().connection.status == .connected || NEVPNManager.shared().connection.status == .disconnected {
+                self.updateIPAddress()
+            }
+        }
+    }
+    
+    func updateIPAddress() {
+        self.ipAddress?.title = "IP: ..."
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            let sessionManager = Alamofire.SessionManager.default
+            sessionManager.retrier = nil
+            URLCache.shared.removeAllCachedResponses()
+            sessionManager.request(Global.getIPURL, method: .get, parameters: ["random" : arc4random_uniform(10000000)]).responseJSON { response in
+                switch response.result {
+                case .success:
+                    if let json = response.result.value as? [String: Any], let publicIPAddress = json["ip"] as? String {
+                        self.ipAddress?.title = "IP: \(publicIPAddress)"
+                    }
+                    else {
+                        self.ipAddress?.title = ""
+                    }
+                case .failure(let error):
+                    DDLogError("Error loading IP Address \(error)")
+                    self.ipAddress?.title = ""
+                }
+            }
+        })
+    }
     
     //MARK: - VPN States
     func setVPNButtonConnecting() {
@@ -345,6 +377,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func showTunnelsMenu(_ sender: Any) {
+        self.updateIPAddress()
         settingsVersion?.title = "Version " + Utils.getTunnelsVersion() + "-" + Global.apiVersionPrefix()
         if let event = NSApplication.shared.currentEvent {
             NSMenu.popUpContextMenu(settingsMenu!, with: event, for: self.settingsButton!)
@@ -529,6 +562,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     @IBOutlet var settingsButton: NSButton?
     @IBOutlet var settingsMenu: NSMenu?
     @IBOutlet var settingsVersion: NSMenuItem?
+    @IBOutlet var ipAddress: NSMenuItem?
     @IBOutlet var installVPNButton: NSButton?
     @IBOutlet var vpnStatusLabel: NSTextField?
     @IBOutlet var networkIssuesView: NSView?

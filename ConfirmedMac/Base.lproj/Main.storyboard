@@ -945,6 +945,7 @@
                         <outlet property="countryButtonFlag" destination="5td-BY-0MG" id="vkS-np-vwN"/>
                         <outlet property="countryTableView" destination="BbQ-1q-RSK" id="in3-SB-lBs"/>
                         <outlet property="installVPNButton" destination="LL4-Bl-zum" id="izP-7u-zXV"/>
+                        <outlet property="ipAddress" destination="YlI-hg-1Y1" id="lli-UD-DbA"/>
                         <outlet property="networkIssuesView" destination="mEo-5P-CwR" id="mEw-9u-Gg4"/>
                         <outlet property="settingsButton" destination="t7l-iT-opM" id="Iq8-Wh-ydU"/>
                         <outlet property="settingsMenu" destination="GiE-VB-NiQ" id="wzz-Oq-n0G"/>
@@ -958,6 +959,10 @@
                 <menu id="GiE-VB-NiQ">
                     <items>
                         <menuItem title="Version 0.1.1" enabled="NO" id="uV3-hP-ZhI">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="PYm-IY-bec"/>
+                        <menuItem title="IP: ..." enabled="NO" id="YlI-hg-1Y1">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="pix-TQ-taX"/>
@@ -1105,7 +1110,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="wlh-D2-ywN">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="221"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="HEp-4Y-0sd" viewBased="YES" id="BuP-Zl-6v6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="198"/>
@@ -1128,11 +1133,11 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="domainTableCell" id="emJ-jT-fh0">
-                                                                                <rect key="frame" x="1" y="1" width="310" height="17"/>
+                                                                                <rect key="frame" x="1" y="1" width="309.5" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pre-4J-odV">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="310" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" tag="500" title="Table View Cell" id="fyU-A7-Ugd">
                                                                                             <font key="font" size="12" name="AvenirNext-Regular"/>
@@ -1161,7 +1166,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="OQv-4J-Vpw" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="314" y="1" width="103" height="17"/>
+                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="Mz8-cj-eRU">
@@ -1223,7 +1228,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="oLt-s5-8gZ">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="235"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="60" rowSizeStyle="automatic" headerView="ary-Y5-Lr9" viewBased="YES" id="WD2-yi-zaD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="212"/>
@@ -1246,7 +1251,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="addDomainTableCell" id="Nnf-SR-6XM" customClass="WhitelistAddDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="1" width="310" height="60"/>
+                                                                                <rect key="frame" x="1" y="1" width="309.5" height="60"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="l7M-Nx-atl" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
@@ -1288,7 +1293,7 @@
                                                                                 </connections>
                                                                             </tableCellView>
                                                                             <tableCellView identifier="domainTableCell" id="xIR-3V-Wvc" customClass="WhitelistDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="63" width="310" height="19"/>
+                                                                                <rect key="frame" x="1" y="63" width="309.5" height="19"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="pt4-i3-iDP">
@@ -1321,7 +1326,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="jET-tz-8Gs" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="314" y="1" width="103" height="40"/>
+                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="40"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="mCu-jp-90s">
