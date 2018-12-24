@@ -1787,7 +1787,7 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAB-l5-Ii1" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
                                         <rect key="frame" x="57" y="314" width="206" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="Tun-Xx-wiU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="Tun-Xx-wiU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
                                             <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1812,11 +1812,14 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitButtonPressed:" target="haL-US-Zup" id="O14-W1-6O1"/>
+                                        </connections>
                                     </textField>
                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKU-zR-SeR" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
                                         <rect key="frame" x="57" y="256" width="206" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" id="oQq-IN-UCn" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" id="oQq-IN-UCn" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
                                             <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1841,13 +1844,14 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="submitButtonPressed:" target="haL-US-Zup" id="uv9-AJ-moR"/>
                                             <outlet property="nextKeyView" destination="v1U-ig-6Ic" id="A2s-VC-6YZ"/>
                                         </connections>
                                     </textField>
                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1U-ig-6Ic" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
                                         <rect key="frame" x="57" y="198" width="206" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Password Confirmation" drawsBackground="YES" id="JfM-OE-qNQ" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Password Confirmation" drawsBackground="YES" id="JfM-OE-qNQ" customClass="SecureVerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                             <font key="font" size="13" name="Montserrat-Regular"/>
                                             <color key="textColor" name="rgb-80"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1871,6 +1875,9 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitButtonPressed:" target="haL-US-Zup" id="UU6-9g-HSN"/>
+                                        </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Omp-fa-vdW" customClass="TunnelsButton" customModule="Confirmed_VPN" customModuleProvider="target">
                                         <rect key="frame" x="40" y="12" width="240" height="50"/>
