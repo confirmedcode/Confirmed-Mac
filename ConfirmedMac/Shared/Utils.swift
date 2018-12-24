@@ -288,36 +288,61 @@ class Utils: SharedUtils {
         }
     }
     
+    static var proxyTaskQueue = OperationQueue.init()
     static func startConfirmedProxyWithoutXPC(reply: @escaping (NSNumber) -> Void) {
         
         //we should probably iterate through all interfaces?
-        let command = "/usr/sbin/networksetup"
-        var arguments = ["-setwebproxy", "wi-fi", "127.0.0.1", "9090"]
-        runTask(command: command, arguments: arguments, reply:reply)
+        proxyTaskQueue.maxConcurrentOperationCount = 1
+        proxyTaskQueue.cancelAllOperations()
         
-        arguments = ["-setsecurewebproxy", "wi-fi", "127.0.0.1", "9090"]
-        runTask(command: command, arguments: arguments, reply:reply)
+        let startOp = BlockOperation.init()
+        startOp.addExecutionBlock {
+            if startOp.isCancelled { return }
+            let command = "/usr/sbin/networksetup"
+            var arguments = ["-setwebproxy", "wi-fi", "127.0.0.1", "9090"]
+            runTask(command: command, arguments: arguments, reply:reply)
+
+            if startOp.isCancelled { return }
+            arguments = ["-setsecurewebproxy", "wi-fi", "127.0.0.1", "9090"]
+            runTask(command: command, arguments: arguments, reply:reply)
+            
+            if startOp.isCancelled { return }
+            arguments = ["-setwebproxystate", "wi-fi", "on"]
+            runTask(command: command, arguments: arguments, reply:reply)
+            
+            if startOp.isCancelled { return }
+            arguments = ["-setsecurewebproxystate", "wi-fi", "on"]
+            runTask(command: command, arguments: arguments, reply:reply)
+        }
         
-        
-        arguments = ["-setwebproxystate", "wi-fi", "on"]
-        runTask(command: command, arguments: arguments, reply:reply)
-        
-        arguments = ["-setsecurewebproxystate", "wi-fi", "on"]
-        runTask(command: command, arguments: arguments, reply:reply)
+        proxyTaskQueue.addOperation(startOp)
     }
     
     static func stopConfirmedProxyWithoutXPC(reply: @escaping (NSNumber) -> Void) {
         
-        let command = "/usr/sbin/networksetup"
-        var arguments = ["-setwebproxystate", "wi-fi", "off"]
-        runTask(command: command, arguments: arguments, reply:reply)
+        proxyTaskQueue.maxConcurrentOperationCount = 1
+        proxyTaskQueue.cancelAllOperations()
         
-        arguments = ["-setsecurewebproxystate", "wi-fi", "off"]
-        runTask(command: command, arguments: arguments, reply:reply)
+        let stopOp = BlockOperation.init()
+        stopOp.addExecutionBlock {
+            if stopOp.isCancelled { return }
+            let command = "/usr/sbin/networksetup"
+            var arguments = ["-setwebproxystate", "wi-fi", "off"]
+            runTask(command: command, arguments: arguments, reply:reply)
+            
+            if stopOp.isCancelled { return }
+            arguments = ["-setsecurewebproxystate", "wi-fi", "off"]
+            runTask(command: command, arguments: arguments, reply:reply)
+        }
+        
+        proxyTaskQueue.addOperation(stopOp)
     }
     
     /*
         * helper to run a generic terminal command
+        * must be called asynchronously as this can take up to 15 seconds
+        * kills task after 15 seconds to prevent freeze
+        * should build a retry mechanism in future (this is only used for whitelisting domains right now and non-essential to ensure privacy & encryption)
      */
     static func runTask(command: String, arguments: Array<String>, reply:@escaping ((NSNumber) -> Void)) -> Void
     {
@@ -325,16 +350,18 @@ class Utils: SharedUtils {
         let stdOut:Pipe = Pipe()
         
         let stdOutHandler =  { (file: FileHandle!) -> Void in
+            usleep(100000)
             let data = file.availableData
-            guard let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return }
+            guard NSString(data: data, encoding: String.Encoding.utf8.rawValue) != nil else { return }
             
         }
         stdOut.fileHandleForReading.readabilityHandler = stdOutHandler
         
         let stdErr:Pipe = Pipe()
         let stdErrHandler =  { (file: FileHandle!) -> Void in
+            usleep(100000)
             let data = file.availableData
-            guard let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return }
+            guard NSString(data: data, encoding: String.Encoding.utf8.rawValue) != nil else { return }
             
         }
         stdErr.fileHandleForReading.readabilityHandler = stdErrHandler
@@ -349,6 +376,18 @@ class Utils: SharedUtils {
         }
         
         task.launch()
+        
+        let startDate = Date.init()
+        while task.isRunning {
+            sleep(1)
+            if abs(startDate.timeIntervalSinceNow) > 15 { //wait some reasonable amount of time, otherwise kill process
+                DDLogWarn("Killing long running task")
+                task.terminate()
+                break
+            }
+        }
+        
+        
     }
     
     static func shell(launchPath path: String, arguments args: [String]) -> String {
