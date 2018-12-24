@@ -11,7 +11,7 @@ import Sparkle
 import Alamofire
 import CocoaLumberjackSwift
 
-class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSUserNotificationCenterDelegate {
     
     /*
         * setup available regions
@@ -269,6 +269,52 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
         })
     }
     
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
+    
+    func startSpeedTest() {
+        StatusBarController.shared.closePopover(self)
+        NSUserNotificationCenter.default.delegate = self
+        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+        
+        var vpnStatusString = "with the VPN on"
+        if NEVPNManager.shared().connection.status != .connected {
+            vpnStatusString = "with the VPN off"
+        }
+        
+        let notification = NSUserNotification()
+        notification.title = "Speed Test Started"
+        notification.informativeText = "Confirmed will take 10-30 seconds to run the speed test \(vpnStatusString)."
+        notification.soundName = nil
+        notification.otherButtonTitle = "Ok"
+        notification.hasActionButton = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0, execute: {
+            NSUserNotificationCenter.default.deliver(notification)
+        })
+        
+        TunnelSpeed().testDownloadSpeedWithTimout(timeout: 20.0) { (megabytesPerSecond, error) -> () in
+            NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+            let notification = NSUserNotification()
+            notification.title = "Speed Test Result"
+            notification.soundName = nil
+            notification.otherButtonTitle = "Ok"
+            notification.hasActionButton = false
+            
+            if megabytesPerSecond > 0 {
+                notification.informativeText = "Your Internet speed is \(String(format: "%.1f", megabytesPerSecond)) Mbps \(vpnStatusString)."
+            }
+            else {
+                notification.informativeText = "There was an error trying to measure your Internet speed. Please try again."
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0, execute: {
+                NSUserNotificationCenter.default.deliver(notification)
+            })
+        }
+    }
+    
+    
     //MARK: - VPN States
     func setVPNButtonConnecting() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -367,8 +413,8 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     }
     
     @IBAction func speedTest (_ sender: Any) {
-        if let url = URL(string: "https://fast.com/"), NSWorkspace.shared.open(url) {
-        }
+        startSpeedTest()
+        self.resignFirstResponder()
     }
     
     @IBAction func manageAccount (_ sender: Any) {

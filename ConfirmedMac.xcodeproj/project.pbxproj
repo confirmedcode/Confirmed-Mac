@@ -11,6 +11,7 @@
 		A102F3A41F9BAE5C005307E7 /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A102F3A31F9BAE5C005307E7 /* Flags.xcassets */; };
 		A102F3A61F9D3568005307E7 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102F3A51F9D3568005307E7 /* LaunchAtLogin.swift */; };
 		A11070EE207FD0AA00306CE5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1769109207FCD1F00CAF05C /* NetworkExtension.framework */; };
+		A11742E821D18CF20033D97D /* TunnelSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11742E721D18CF20033D97D /* TunnelSpeed.swift */; };
 		A11EDF2F1FEC48B700F60FB2 /* NSNotificationCenter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EDF2E1FEC48B700F60FB2 /* NSNotificationCenter+Additions.swift */; };
 		A11EDF341FEC4BA600F60FB2 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11EDF321FEC4BA600F60FB2 /* OnboardingPageViewController.swift */; };
 		A120CA171F98E95F00ED5338 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A120CA161F98E95F00ED5338 /* StatusBarController.swift */; };
@@ -162,6 +163,7 @@
 		A102F3A11F9AA900005307E7 /* VPNProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNProgress.swift; sourceTree = "<group>"; };
 		A102F3A31F9BAE5C005307E7 /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
 		A102F3A51F9D3568005307E7 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
+		A11742E721D18CF20033D97D /* TunnelSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TunnelSpeed.swift; sourceTree = "<group>"; };
 		A11EDF2E1FEC48B700F60FB2 /* NSNotificationCenter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+Additions.swift"; sourceTree = "<group>"; };
 		A11EDF321FEC4BA600F60FB2 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		A120CA161F98E95F00ED5338 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				A1354A051FA7C90A003E9EA6 /* Auth.swift */,
 				A1CFBC9321544C510029208F /* VPNController.swift */,
 				A1E7481B1F917AAF004B8021 /* ConfirmedConstants.swift */,
+				A11742E721D18CF20033D97D /* TunnelSpeed.swift */,
 				A1E7481D1F917AE4004B8021 /* Utils.swift */,
 			);
 			path = Shared;
@@ -937,6 +940,7 @@
 				A13549FA1F9F96A4003E9EA6 /* OnboardingViewController.swift in Sources */,
 				A1D1F83C20C048FA00CC5B02 /* CGRectEx.swift in Sources */,
 				A1F07D4A20A9EC90007CBA1B /* CountryTableRowView.swift in Sources */,
+				A11742E821D18CF20033D97D /* TunnelSpeed.swift in Sources */,
 				A1E7481E1F917AE4004B8021 /* Utils.swift in Sources */,
 				A11EDF341FEC4BA600F60FB2 /* OnboardingPageViewController.swift in Sources */,
 				A1354A011F9FB031003E9EA6 /* BackgroundImageView.swift in Sources */,

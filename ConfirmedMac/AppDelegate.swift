@@ -107,9 +107,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
         let syncVPNToStateTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(synchronizeVPNToState), userInfo: nil, repeats: true)
         syncVPNToStateTimer.fire()
         
-        
     }
-    
+
     /*
         * ensure vpn is functinoing properly
             * we have to implement on-demand ourselves

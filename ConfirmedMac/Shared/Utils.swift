@@ -503,7 +503,6 @@ class Utils: SharedUtils {
             alert.runModal()
             
         }
-        sharingService?.perform(withItems: items)
         
     }
     
