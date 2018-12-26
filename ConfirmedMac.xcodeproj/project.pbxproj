@@ -27,6 +27,7 @@
 		A123985120083C18009348B3 /* Crawler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A123984520083C15009348B3 /* Crawler.swift */; };
 		A123985220083C18009348B3 /* RotatingArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A123984620083C16009348B3 /* RotatingArc.swift */; };
 		A123985320083C18009348B3 /* DeterminateAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A123984720083C16009348B3 /* DeterminateAnimation.swift */; };
+		A12510B821D29BB600B6C61D /* ExceptionHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12510B721D29BB600B6C61D /* ExceptionHandling.framework */; };
 		A1284793208112EC00293C49 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1284792208112EC00293C49 /* main.swift */; };
 		A128479B2081135000293C49 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12847972081134F00293C49 /* HelperProtocol.swift */; };
 		A128479C2081135000293C49 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12847982081134F00293C49 /* Helper.swift */; };
@@ -179,6 +180,7 @@
 		A123984520083C15009348B3 /* Crawler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crawler.swift; sourceTree = "<group>"; };
 		A123984620083C16009348B3 /* RotatingArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingArc.swift; sourceTree = "<group>"; };
 		A123984720083C16009348B3 /* DeterminateAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeterminateAnimation.swift; sourceTree = "<group>"; };
+		A12510B721D29BB600B6C61D /* ExceptionHandling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExceptionHandling.framework; path = System/Library/Frameworks/ExceptionHandling.framework; sourceTree = SDKROOT; };
 		A1284790208112EB00293C49 /* com.confirmed.ConfirmedProxy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.confirmed.ConfirmedProxy; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1284792208112EC00293C49 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A12847972081134F00293C49 /* HelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A12510B821D29BB600B6C61D /* ExceptionHandling.framework in Frameworks */,
 				A153438920E6C5DD002762B6 /* NEKit.framework in Frameworks */,
 				A1D1F84720C1B11900CC5B02 /* CocoaLumberjack.framework in Frameworks */,
 				A1D1F84820C1B11900CC5B02 /* CocoaLumberjackSwift.framework in Frameworks */,
@@ -508,6 +511,7 @@
 		A19192431F45249C0071FF62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A12510B721D29BB600B6C61D /* ExceptionHandling.framework */,
 				A1769109207FCD1F00CAF05C /* NetworkExtension.framework */,
 				A1BA1EC32072C15E00DADDEC /* CocoaAsyncSocket.framework */,
 				A1BA1EBE2072C15D00DADDEC /* CocoaLumberjack.framework */,

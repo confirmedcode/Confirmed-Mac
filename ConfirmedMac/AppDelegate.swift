@@ -16,17 +16,20 @@ import Alamofire
 import CocoaLumberjackSwift
 import SafariServices
 import Reachability
+import ExceptionHandling
 
 let fileLogger: DDFileLogger = DDFileLogger() // File Logger
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
     
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         UserDefaults.standard.synchronize()
         DDLogInfo("Launching here")
         Utils.moveToApplicationsFolder()
+        setupRelaunchHandling()
         
         Utils.chooseAPIVersion()
         Utils.setupLogging()
@@ -196,6 +199,74 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
     }
     
     
+    //MARK: - RELAUNCH HANDLING
+    
+    /*
+     * Check if last re-launch was recent (10 seconds or less ago) and don't re-launch
+     * In future, clear potential settings with issues and try several times
+     */
+    static func relaunchIfNotPermanentCrash() {
+        let lastRelaunchKey = "LastRelaunchFromCrash"
+        
+        if let date = UserDefaults.standard.value(forKey: lastRelaunchKey) as? Date, abs(date.timeIntervalSinceNow) < 10 {
+            return
+        }
+
+        Utils.relaunch(afterDelay: 1.0)
+        UserDefaults.standard.set(NSDate.init(), forKey: lastRelaunchKey)
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    override func exceptionHandler(_ sender: NSExceptionHandler!, shouldHandle exception: NSException!, mask aMask: Int) -> Bool {
+        
+        DDLogError("Unhandled exception")
+        DDLogError("Name: \(exception.name), Reason \(exception.reason ?? "nil")")
+        DDLogError("Symbol: \(exception.callStackSymbols)")
+        
+        AppDelegate.relaunchIfNotPermanentCrash()
+        
+        return false
+    }
+    
+    func setupRelaunchHandling() {
+        setupExceptionHandling()
+        setupSignalTrap()
+    }
+    
+    func setupSignalTrap() {
+        let signals = [
+            SIGQUIT, SIGILL, SIGTRAP, SIGABRT, SIGEMT, SIGFPE, SIGBUS, SIGSEGV,
+            SIGSYS, SIGALRM, SIGXCPU, SIGXFSZ, SIGTERM, SIGKILL, EXC_BAD_ACCESS, EXC_BAD_INSTRUCTION
+        ]
+        
+        let handler: @convention(c) (Int32) -> () = { sig in
+            DDLogError("Unhandled signal \(sig)")
+            AppDelegate.relaunchIfNotPermanentCrash()
+        }
+        
+        var sigHandler = sigaction(__sigaction_u: unsafeBitCast(handler, to: __sigaction_u.self),
+                                   sa_mask: 0,
+                                   sa_flags: 0)
+        
+        for sig in signals {
+            sigaction(sig, &sigHandler, nil)
+        }
+    }
+    
+    func setupExceptionHandling() {
+        NSExceptionHandler.default()?.setExceptionHangingMask(NSLogUncaughtExceptionMask | NSHandleUncaughtExceptionMask | NSLogUncaughtSystemExceptionMask | NSHandleUncaughtSystemExceptionMask | NSLogUncaughtRuntimeErrorMask | NSHandleUncaughtRuntimeErrorMask)
+        NSExceptionHandler.default()?.setDelegate(self)
+        
+        
+        NSSetUncaughtExceptionHandler { exception in
+            DDLogError("Name: \(exception.name), Reason \(exception.reason ?? "nil")")
+            DDLogError("Symbol: \(exception.callStackSymbols)")
+            AppDelegate.relaunchIfNotPermanentCrash()
+        }
+    }
+    
+    
     //MARK: - CLEANUP
     func applicationWillTerminate(_ aNotification: Notification) {
         let defaults = UserDefaults.standard
@@ -203,9 +274,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
                 
         }
         else {
-                 Utils.disableProxySettings()
+            Utils.disableProxySettings()
         }
     }
+    
+    
     
     /*
         * clear up all variables & personal information

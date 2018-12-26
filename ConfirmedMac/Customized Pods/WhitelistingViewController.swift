@@ -16,7 +16,7 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
             return Utils.getConfirmedWhitelist().count
         }
         else {
-            return Utils.getUserWhitelist().count
+            return Utils.getUserWhitelist().count + 1
         }
     }
     
