@@ -319,7 +319,9 @@ class VPNController: NSObject {
             p.serverAddress = ipAddress
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.certificate
             p.certificateType = NEVPNIKEv2CertificateType.ECDSA256
-            p.serverCertificateIssuerCommonName = Global.remoteIdentifier
+            if Global.isVersion(version: .v3API) {
+                p.serverCertificateIssuerCommonName = Global.remoteIdentifier
+            }
             p.localIdentifier = localId
             p.remoteIdentifier = Global.remoteIdentifier
             p.ikeSecurityAssociationParameters.encryptionAlgorithm = NEVPNIKEv2EncryptionAlgorithm.algorithmAES128GCM

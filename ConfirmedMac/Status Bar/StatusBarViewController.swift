@@ -163,12 +163,33 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
         self.installVPNButton?.attributedTitle = NSAttributedString(string: "Install", attributes: [ NSAttributedStringKey.foregroundColor : NSColor.tunnelsBlueColor, NSAttributedStringKey.paragraphStyle : pstyle, NSAttributedStringKey.font:  NSFont(name: "AvenirNext-DemiBold", size: 16)])
         
         countryTableView?.reloadData()
+        countryTableView?.action = #selector(onItemClicked)
         
         self.setupVPNNotification()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadServerEndpoints), name: .switchingAPIVersions, object: nil)
         reloadServerEndpoints()
     }
+    
+    @objc private func onItemClicked() {
+        if let row = countryTableView?.clickedRow {
+            print("row \(row)")
+            self.countryButtonSelected(self)
+            Utils.setSavedRegion(region: items[row].endpoint)
+            VPNController.disconnectFromVPN(setToDisconnect: false)
+            VPNController.connectToVPN()
+            
+            let countryName = items[row].countryName
+            let countryFlag = NSImage(named: NSImage.Name(rawValue: items[row].flagImagePath))
+            countryButtonFlag?.image = countryFlag
+
+            let centeredStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+
+            countryButton?.attributedTitle = NSAttributedString(string: countryName, attributes: [NSAttributedStringKey.paragraphStyle : centeredStyle, NSAttributedStringKey.foregroundColor : countryButton?.buttonColor ?? NSColor.tunnelsLightBlueColor, NSAttributedStringKey.font:  NSFont(name: (countryButton?.font?.fontName)!, size: (countryButton?.font?.pointSize)!) ?? 12])
+        }
+        
+    }
+    
     
     @objc func reloadServerEndpoints() {
         self.loadEndpoints()
@@ -480,54 +501,56 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     //MARK: - Table Methods
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        let rowCell = tableView.rowView(atRow: row, makeIfNecessary: false) as? CountryCell
-        let rowText = rowCell?.countryName
-        
-        NSAnimationContext.runAnimationGroup({_ in
-            NSAnimationContext.current.duration = 0.3
-            rowCell?.animator().backgroundColor = NSColor.tunnelsBlueColor
-            rowText?.animator().textColor = NSColor.white
-            
-        }, completionHandler:{
-            DDLogInfo("Animation completed")
-            self.countryButtonSelected(self)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                NSAnimationContext.runAnimationGroup({_ in
-                    NSAnimationContext.current.duration = 0.3
-                    if InterfaceStyle.init() == .Dark {
-                        rowCell?.animator().backgroundColor = NSColor.init(white: 40/255.0, alpha: 1.0)
-                        rowText?.animator().textColor = NSColor.init(white: 250/255.0, alpha: 1.0)
-                        
-                    }
-                    else {
-                        rowCell?.animator().backgroundColor = NSColor.white
-                        rowText?.animator().textColor = NSColor.darkGray
-                    }
-                }, completionHandler:{
-                    DDLogInfo("Animation completed")
-                    tableView.deselectAll(self)
-                })
-            }
-        })
+//        let rowCell = tableView.rowView(atRow: row, makeIfNecessary: false) as? CountryCell
+//        let rowText = rowCell?.countryName
+//
+//        self.countryButtonSelected(self)
+//
+//        NSAnimationContext.runAnimationGroup({_ in
+//            NSAnimationContext.current.duration = 0.3
+//            rowCell?.animator().backgroundColor = NSColor.tunnelsBlueColor
+//            rowText?.animator().textColor = NSColor.white
+//
+//        }, completionHandler:{
+//            DDLogInfo("Animation completed")
+//            self.countryButtonSelected(self)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                NSAnimationContext.runAnimationGroup({_ in
+//                    NSAnimationContext.current.duration = 0.3
+//                    if InterfaceStyle.init() == .Dark {
+//                        rowCell?.animator().backgroundColor = NSColor.init(white: 40/255.0, alpha: 1.0)
+//                        rowText?.animator().textColor = NSColor.init(white: 250/255.0, alpha: 1.0)
+//
+//                    }
+//                    else {
+//                        rowCell?.animator().backgroundColor = NSColor.white
+//                        rowText?.animator().textColor = NSColor.darkGray
+//                    }
+//                }, completionHandler:{
+//                    DDLogInfo("Animation completed")
+//                    tableView.deselectAll(self)
+//                })
+//            }
+//        })
         
         Utils.setSavedRegion(region: items[row].endpoint)
         VPNController.disconnectFromVPN(setToDisconnect: false)
         VPNController.connectToVPN()
         
-        NSAnimationContext.runAnimationGroup({_ in
-            NSAnimationContext.current.duration = 0.3
-            let countryName = items[row].countryName
-            let countryFlag = NSImage(named: NSImage.Name(rawValue: items[row].flagImagePath))
-            countryButtonFlag?.animator().image = countryFlag
-            
-            let centeredStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-            
-            countryButton?.animator().attributedTitle = NSAttributedString(string: countryName, attributes: [NSAttributedStringKey.paragraphStyle : centeredStyle, NSAttributedStringKey.foregroundColor : countryButton?.buttonColor ?? NSColor.tunnelsLightBlueColor, NSAttributedStringKey.font:  NSFont(name: (countryButton?.font?.fontName)!, size: (countryButton?.font?.pointSize)!) ?? 12])
-            
-            
-        }, completionHandler:{
-            DDLogInfo("Animation completed")
-        })
+//        NSAnimationContext.runAnimationGroup({_ in
+//            NSAnimationContext.current.duration = 0.3
+//            let countryName = items[row].countryName
+//            let countryFlag = NSImage(named: NSImage.Name(rawValue: items[row].flagImagePath))
+//            countryButtonFlag?.animator().image = countryFlag
+//
+//            let centeredStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+//
+//            countryButton?.animator().attributedTitle = NSAttributedString(string: countryName, attributes: [NSAttributedStringKey.paragraphStyle : centeredStyle, NSAttributedStringKey.foregroundColor : countryButton?.buttonColor ?? NSColor.tunnelsLightBlueColor, NSAttributedStringKey.font:  NSFont(name: (countryButton?.font?.fontName)!, size: (countryButton?.font?.pointSize)!) ?? 12])
+//
+//
+//        }, completionHandler:{
+//            DDLogInfo("Animation completed")
+//        })
         
         
         return true
@@ -584,8 +607,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
                 countryButtonArrow?.image = NSImage.upArrow
             }
         }
-        
-       
+    
         NSAnimationContext.runAnimationGroup({_ in
             countryButtonBottomContstraint?.animator().constant = newHeight
         }, completionHandler:{
