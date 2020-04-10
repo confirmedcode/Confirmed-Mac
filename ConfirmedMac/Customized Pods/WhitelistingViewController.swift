@@ -62,16 +62,17 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
     func tableView(_ tableView: NSTableView, viewFor viewForTableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         if tableView == customTable {
+            let domains = Utils.getUserWhitelistAsArray()
             if (viewForTableColumn?.identifier)!.rawValue == "whitelistColumn" {
                 //update the UI based on saved whitelisted settings
                 
                 if let rowCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "whitelistCell"), owner: self) as? WhitelistStatusCell, let checkbox = rowCell.checkbox {
                     //last row of user whitelist should allow user to add
                     checkbox.isHidden = row == tableView.numberOfRows - 1 ? true : false
-                    let domains = Array(Utils.getUserWhitelist().keys)
+                    //let domains = Array(Utils.getUserWhitelist().keys)
                     if domains.count > row {
                         checkbox.state = .on
-                        checkbox.identifier = NSUserInterfaceItemIdentifier(rawValue: domains[row])
+                        checkbox.identifier = NSUserInterfaceItemIdentifier(rawValue: domains[row].0)
                         checkbox.target = self
                         checkbox.action = #selector(removeWhitelistCell(sender:))
                     }
@@ -94,9 +95,9 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
                     let rowCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "domainTableCell"), owner: self) as! WhitelistDomainCell
                     
                     let textField = rowCell.domain
-                    let userDomains = Array(Utils.getUserWhitelist().keys)
-                    if userDomains.count > row {
-                        textField?.stringValue = userDomains[row]
+                    //let userDomains = Array(Utils.getUserWhitelist().keys)
+                    if domains.count > row {
+                        textField?.stringValue = domains[row].0
                     }
                     
                     textField?.target = self
@@ -107,16 +108,17 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
         }
         else {
             //users can only toggle confirmed suggested domains
+            let confirmedDomains = Utils.getConfirmedWhitelistAsArray()
             if (viewForTableColumn?.identifier)!.rawValue == "whitelistColumn" {
                 let rowCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "whitelistCell"), owner: self) as! WhitelistStatusCell
                 
                 let checkbox = rowCell.checkbox
-                let confirmedDomains = Array(Utils.getConfirmedWhitelist().keys)
-                let confirmedDomainsStatus = Array(Utils.getConfirmedWhitelist().values) as! Array<NSNumber>
+                //let confirmedDomains = Array(Utils.getConfirmedWhitelist().keys)
+                //let confirmedDomainsStatus = Array(Utils.getConfirmedWhitelist().values) as! Array<NSNumber>
                 
-                if confirmedDomains.count > row, confirmedDomainsStatus.count > row {
-                    checkbox?.state = confirmedDomainsStatus[row].boolValue ? .on : .off
-                    checkbox?.identifier = NSUserInterfaceItemIdentifier(rawValue: confirmedDomains[row])
+                if confirmedDomains.count > row { //, confirmedDomainsStatus.count > row {
+                    checkbox?.state = (confirmedDomains[row].1 as AnyObject).boolValue ? .on : .off //confirmedDomainsStatus[row].boolValue ? .on : .off
+                    checkbox?.identifier = NSUserInterfaceItemIdentifier(rawValue: confirmedDomains[row].0)
                     checkbox?.target = self
                     checkbox?.action = #selector(toggleWhitelistCell(sender:))
                 }
@@ -125,9 +127,9 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
             }
             else {
                 let rowCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "domainTableCell"), owner: self) as! NSTableCellView
-                let confirmedDomains = Array(Utils.getConfirmedWhitelist().keys)
+                //let confirmedDomains = Array(Utils.getConfirmedWhitelist().keys)
                 if confirmedDomains.count > row {
-                    rowCell.textField?.stringValue = confirmedDomains[row]
+                    rowCell.textField?.stringValue = confirmedDomains[row].0
                 }
                 
                 return rowCell
@@ -142,6 +144,9 @@ class WhitelistingViewController: NSViewController, RHPreferencesViewControllerP
         Utils.addTrackingArea(button: confirmedButton!)
         Utils.addTrackingArea(button: customButton!)
         Utils.addTrackingArea(button: requireVPNButton!)
+        
+        confirmedTable?.gridStyleMask = .solidHorizontalGridLineMask
+        confirmedTable?.gridColor = NSColor.gray.withAlphaComponent(0.5)
         
         //if setting is on, show in UI
         //otherwise set default

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -601,7 +601,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -665,8 +665,8 @@
         <scene sceneID="gR2-sc-JOq">
             <objects>
                 <viewController storyboardIdentifier="StatusBarViewController" id="JHA-SY-oqi" customClass="StatusBarViewController" customModule="Confirmed_VPN" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Tde-z8-AJI">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="270"/>
+                    <view key="view" misplaced="YES" id="Tde-z8-AJI">
+                        <rect key="frame" x="0.0" y="0.0" width="281" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NAs-Zm-PK3">
@@ -675,7 +675,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="tunnels_bg" id="bgd-ef-cen"/>
                             </imageView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YoM-16-fPC" customClass="MaterialProgress" customModule="Confirmed_VPN" customModuleProvider="target">
-                                <rect key="frame" x="80" y="95" width="120" height="120"/>
+                                <rect key="frame" x="82" y="95" width="120" height="120"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LL4-Bl-zum">
                                         <rect key="frame" x="10" y="39" width="100" height="43"/>
@@ -731,10 +731,10 @@
                                 </userDefinedRuntimeAttributes>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mEo-5P-CwR">
-                                <rect key="frame" x="0.0" y="232" width="280" height="38"/>
+                                <rect key="frame" x="0.0" y="232" width="283" height="38"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XDi-P9-Xyc">
-                                        <rect key="frame" x="0.0" y="5" width="280" height="28"/>
+                                        <rect key="frame" x="0.0" y="5" width="283" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="kSW-yR-Sgs"/>
                                         </constraints>
@@ -758,7 +758,7 @@
                                 </userDefinedRuntimeAttributes>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t7l-iT-opM">
-                                <rect key="frame" x="254" y="244" width="16" height="16"/>
+                                <rect key="frame" x="257" y="244" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="WhB-Eb-5kf"/>
                                     <constraint firstAttribute="width" secondItem="t7l-iT-opM" secondAttribute="height" id="fAW-qr-KNH"/>
@@ -781,7 +781,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2sf-dD-KTS" customClass="TunnelsButton" customModule="Confirmed_VPN" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jHr-ea-pVm"/>
                                 </constraints>
@@ -819,7 +819,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="usa_flag" id="zzA-jf-wuy"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUB-Bk-w9E">
-                                <rect key="frame" x="206" y="11" width="16" height="14"/>
+                                <rect key="frame" x="209" y="11" width="16" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="CjK-oY-AuN"/>
                                     <constraint firstAttribute="width" constant="16" id="UeV-WV-OAP"/>
@@ -832,14 +832,14 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="40" horizontalPageScroll="10" verticalLineScroll="40" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="2go-Ub-QqZ">
-                                <rect key="frame" x="0.0" y="-231" width="280" height="232"/>
+                                <rect key="frame" x="0.0" y="-231" width="283" height="232"/>
                                 <clipView key="contentView" id="7mJ-CA-TnK">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="232"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="283" height="232"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" selectionHighlightStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="38" rowSizeStyle="automatic" viewBased="YES" id="BbQ-1q-RSK">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="232"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="283" height="232"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -847,7 +847,6 @@
                                             <tableColumns>
                                                 <tableColumn editable="NO" width="277" minWidth="40" maxWidth="1000" id="ntP-wm-6iA">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" size="12" name="AvenirNext-Regular"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -961,8 +960,8 @@
                         <menuItem title="Version 0.1.1" enabled="NO" id="uV3-hP-ZhI">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="PYm-IY-bec"/>
-                        <menuItem title="IP: ..." enabled="NO" id="YlI-hg-1Y1">
+                        <menuItem isSeparatorItem="YES" hidden="YES" id="PYm-IY-bec"/>
+                        <menuItem title="IP: ..." hidden="YES" enabled="NO" id="YlI-hg-1Y1">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="pix-TQ-taX"/>
@@ -1072,7 +1071,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Require VPN" identifier="" id="NnP-VY-pxE">
-                                        <view key="view" ambiguous="YES" id="NNK-92-f3b">
+                                        <view key="view" id="NNK-92-f3b">
                                             <rect key="frame" x="10" y="7" width="422" height="299"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -1108,20 +1107,19 @@
                                                 <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7Z-qr-DoK">
                                                     <rect key="frame" x="1" y="0.0" width="421" height="222"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <clipView key="contentView" ambiguous="YES" id="wlh-D2-ywN">
+                                                    <clipView key="contentView" id="wlh-D2-ywN">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="221"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="HEp-4Y-0sd" viewBased="YES" id="BuP-Zl-6v6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="198"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                 <tableColumns>
                                                                     <tableColumn identifier="domainColumn" width="309.5" minWidth="40" maxWidth="1000" id="zcu-EP-XHk">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Domain">
-                                                                            <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
@@ -1133,11 +1131,11 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="domainTableCell" id="emJ-jT-fh0">
-                                                                                <rect key="frame" x="1" y="1" width="309.5" height="17"/>
+                                                                                <rect key="frame" x="1" y="1" width="310" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pre-4J-odV">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="17"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="310" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" tag="500" title="Table View Cell" id="fyU-A7-Ugd">
                                                                                             <font key="font" size="12" name="AvenirNext-Regular"/>
@@ -1154,7 +1152,6 @@
                                                                     </tableColumn>
                                                                     <tableColumn identifier="whitelistColumn" width="103.5" minWidth="40" maxWidth="1000" id="NkN-ci-lPq">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Whitelisted">
-                                                                            <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
@@ -1166,7 +1163,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="OQv-4J-Vpw" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="17"/>
+                                                                                <rect key="frame" x="314" y="1" width="103" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="Mz8-cj-eRU">
@@ -1228,18 +1225,17 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="oLt-s5-8gZ">
                                                         <rect key="frame" x="1" y="0.0" width="419" height="235"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="60" rowSizeStyle="automatic" headerView="ary-Y5-Lr9" viewBased="YES" id="WD2-yi-zaD">
+                                                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="60" rowSizeStyle="automatic" headerView="ary-Y5-Lr9" viewBased="YES" id="WD2-yi-zaD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="212"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                 <tableColumns>
                                                                     <tableColumn identifier="domainColumn" width="309.5" minWidth="40" maxWidth="1000" id="btP-Nu-3cz">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Domain">
-                                                                            <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
@@ -1251,7 +1247,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="addDomainTableCell" id="Nnf-SR-6XM" customClass="WhitelistAddDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="1" width="309.5" height="60"/>
+                                                                                <rect key="frame" x="1" y="1" width="310" height="60"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField autoresizesSubviews="NO" verticalHuggingPriority="750" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="l7M-Nx-atl" customClass="HoshiTextField" customModule="Confirmed_VPN" customModuleProvider="target">
@@ -1262,18 +1258,18 @@
                                                                                         </constraints>
                                                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Add domain (i.e. netflix.com)" drawsBackground="YES" id="j6s-c1-QnU" customClass="VerticallyAlignedTextFieldCell" customModule="Confirmed_VPN" customModuleProvider="target">
                                                                                             <font key="font" size="11" name="AvenirNext-Regular"/>
-                                                                                            <color key="textColor" name="rgb-80"/>
+                                                                                            <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         </textFieldCell>
                                                                                         <userDefinedRuntimeAttributes>
                                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
-                                                                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                                <color key="value" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
                                                                                                 <color key="value" red="0.0" green="0.67751116069999995" blue="0.90461090690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                                                                                <color key="value" red="0.72156862749999995" green="0.72156862749999995" blue="0.72336632010000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                <color key="value" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                                                                 <real key="value" value="1"/>
@@ -1293,7 +1289,7 @@
                                                                                 </connections>
                                                                             </tableCellView>
                                                                             <tableCellView identifier="domainTableCell" id="xIR-3V-Wvc" customClass="WhitelistDomainCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="1" y="63" width="309.5" height="19"/>
+                                                                                <rect key="frame" x="1" y="63" width="310" height="19"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="500" translatesAutoresizingMaskIntoConstraints="NO" id="pt4-i3-iDP">
@@ -1314,7 +1310,6 @@
                                                                     </tableColumn>
                                                                     <tableColumn identifier="whitelistColumn" width="103.5" minWidth="40" maxWidth="1000" id="eHm-cs-nWz">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Whitelisted">
-                                                                            <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
@@ -1326,7 +1321,7 @@
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         <prototypeCellViews>
                                                                             <tableCellView identifier="whitelistCell" id="jET-tz-8Gs" customClass="WhitelistStatusCell" customModule="Confirmed_VPN" customModuleProvider="target">
-                                                                                <rect key="frame" x="313.5" y="1" width="103.5" height="40"/>
+                                                                                <rect key="frame" x="314" y="1" width="103" height="40"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <button verticalHuggingPriority="750" fixedFrame="YES" tag="501" translatesAutoresizingMaskIntoConstraints="NO" id="mCu-jp-90s">
@@ -2417,12 +2412,12 @@ To enable, open Safari &gt; Preferences &gt; Extensions</string>
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="512" height="512"/>
+        <image name="icon" width="256" height="256"/>
         <image name="power_button" width="200" height="200"/>
-        <image name="settings_icon" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="settings_icon" width="512" height="512"/>
         <image name="tunnels_bg" width="369" height="623"/>
         <image name="up_arrow" width="200" height="178"/>
-        <image name="usa_flag" width="96" height="96"/>
+        <image name="usa_flag" width="48" height="48"/>
         <namedColor name="rgb-80">
             <color red="0.31400001049041748" green="0.31400001049041748" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

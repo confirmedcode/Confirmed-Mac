@@ -274,7 +274,7 @@ class SignupViewController: OnboardingPageViewController {
     
     func showErrorFromCode(errorCode : Int, defaultString: String, textField : NSTextField) {
         textField.stringValue = Global.errorMessageForError(eCode:errorCode)
-        if errorCode == Global.kInvalidEmail { //use default string for this as error is more complicated
+        if errorCode == Global.kRequestFieldValidationError { //use default string for this as error is more complicated
             textField.stringValue = defaultString
         }
         
