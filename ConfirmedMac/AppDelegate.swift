@@ -31,6 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
 //        for d in UserDefaults(suiteName: SharedUtils.userDefaultsSuite)!.dictionaryRepresentation() {
 //            UserDefaults(suiteName: SharedUtils.userDefaultsSuite)!.removeObject(forKey: d.key)
 //        }
+//        for d in UserDefaults.standard.dictionaryRepresentation() {
+//            UserDefaults.standard.removeObject(forKey: d.key)
+//        }
+//
+//        VPNController.forceVPNOff()
+//        Auth.clearCookies()
         
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         UserDefaults.standard.synchronize()
