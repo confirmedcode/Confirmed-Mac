@@ -19,7 +19,6 @@ extension Notification.Name {
     static let signoutUserDuringOnboarding = Notification.Name("SignOutUserDuringOnboarding")
     static let openPreferences = Notification.Name("OpenPreferencesWindow")
     static let sameVersionOpened = Notification.Name("ConfirmedSameVersionIsOpened")
-    static let switchingAPIVersions = Notification.Name("Switching API Versions")
 }
 
 extension NotificationCenter {

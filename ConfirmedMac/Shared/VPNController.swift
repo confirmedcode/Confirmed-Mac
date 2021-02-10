@@ -319,9 +319,7 @@ class VPNController: NSObject {
             p.serverAddress = ipAddress
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.certificate
             p.certificateType = NEVPNIKEv2CertificateType.ECDSA256
-            if Global.isVersion(version: .v3API) {
-                p.serverCertificateIssuerCommonName = Global.remoteIdentifier
-            }
+            p.serverCertificateIssuerCommonName = Global.remoteIdentifier
             p.localIdentifier = localId
             p.remoteIdentifier = Global.remoteIdentifier
             p.ikeSecurityAssociationParameters.encryptionAlgorithm = NEVPNIKEv2EncryptionAlgorithm.algorithmAES128GCM
@@ -438,9 +436,7 @@ class VPNController: NSObject {
                 do {
                     let p12Encoded = Global.keychain[Global.kConfirmedP12Key]
                     var p12Decoded = p12Encoded?.base64Decoded
-                    if !Global.isVersion(version: .v1API) {
-                        p12Decoded = addPasswordFromP12(rootCertData: p12Decoded!)
-                    }
+                    p12Decoded = addPasswordFromP12(rootCertData: p12Decoded!)
                         
                     var clientCertificates: CFArray? = nil
                     let certificate = getCertificate()

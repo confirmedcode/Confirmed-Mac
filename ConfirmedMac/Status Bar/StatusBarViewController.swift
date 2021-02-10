@@ -166,8 +166,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
         countryTableView?.action = #selector(onItemClicked)
         
         self.setupVPNNotification()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadServerEndpoints), name: .switchingAPIVersions, object: nil)
+
         reloadServerEndpoints()
     }
     
@@ -445,7 +444,7 @@ class StatusBarViewController: NSViewController, NSTableViewDelegate, NSTableVie
     
     @IBAction func showTunnelsMenu(_ sender: Any) {
         self.updateIPAddress()
-        settingsVersion?.title = "Version " + Utils.getTunnelsVersion() + "-" + Global.apiVersionPrefix()
+        settingsVersion?.title = "Version " + Utils.getTunnelsVersion() + "-v3"
         if let event = NSApplication.shared.currentEvent {
             NSMenu.popUpContextMenu(settingsMenu!, with: event, for: self.settingsButton!)
         }

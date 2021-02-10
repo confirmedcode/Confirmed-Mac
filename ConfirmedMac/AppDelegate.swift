@@ -25,14 +25,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, SUUpdaterDelegate {
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+//        // Clear all - only for debugging
+//        try? Global.keychain.removeAll()
+//        for d in UserDefaults(suiteName: SharedUtils.userDefaultsSuite)!.dictionaryRepresentation() {
+//            UserDefaults(suiteName: SharedUtils.userDefaultsSuite)!.removeObject(forKey: d.key)
+//        }
+        
         UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
         UserDefaults.standard.synchronize()
         DDLogInfo("Launching here")
         Utils.moveToApplicationsFolder()
         setupRelaunchHandling()
         
-        Utils.chooseAPIVersion()
         Utils.setupLogging()
+        
+        // If V1 or V2, sign out and clear version.
+        if (UserDefaults.standard.string(forKey: kConfirmedAPIVersionDeprecated) == "v1") {
+            DDLogInfo("Was V1, signing out")
+            signoutUser("nothing")
+            UserDefaults.standard.set("v3", forKey: kConfirmedAPIVersionDeprecated)
+        }
+        
         Utils.checkForSwitchedEnvironments()
         Utils.restoreVPNState()
         Utils.setupWhitelistedDefaults()
